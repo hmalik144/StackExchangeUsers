@@ -1,6 +1,4 @@
 # Stack Exchange Users 
-
-# Stack Exchange Users 
 Search for users from stackoverflow api - display a profile when clicked.
 
 ## Installation
