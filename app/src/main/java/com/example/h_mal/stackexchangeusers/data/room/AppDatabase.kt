@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.h_mal.stackexchangeusers.data.room.entities.UserItem
+import com.example.h_mal.stackexchangeusers.data.room.entities.UserEntity
 
 @Database(
-    entities = [UserItem::class],
+    entities = [UserEntity::class],
     version = 1
 )
 abstract class AppDatabase : RoomDatabase() {

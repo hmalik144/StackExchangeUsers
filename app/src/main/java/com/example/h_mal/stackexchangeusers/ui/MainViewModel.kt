@@ -1,9 +1,12 @@
 package com.example.h_mal.stackexchangeusers.ui
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.example.h_mal.stackexchangeusers.application.AppClass.Companion.idlingResources
+import com.example.h_mal.stackexchangeusers.data.model.UserItem
 import com.example.h_mal.stackexchangeusers.data.repositories.Repository
+import com.example.h_mal.stackexchangeusers.data.room.entities.UserEntity
 import com.example.h_mal.stackexchangeusers.utils.Event
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,10 +19,18 @@ class MainViewModel(
 ) : ViewModel() {
 
     // livedata for user items in room database
-    val usersLiveData = repository.getUsersFromDatabase()
+    val usersLiveData = MutableLiveData<List<UserItem>>()
 
     val operationState = MutableLiveData<Event<Boolean>>()
     val operationError = MutableLiveData<Event<String>>()
+
+    init {
+        val observer = Observer<List<UserEntity>> {
+            val list = it.map {entity -> UserItem(entity) }
+            usersLiveData.postValue(list)
+        }
+        repository.getUsersFromDatabase().observeForever (observer)
+    }
 
 
     fun getUsers(username: String?){

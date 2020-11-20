@@ -5,7 +5,7 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.io.IOException
 
-abstract class ResponseUnwrap {
+abstract class SafeApiCall {
 
     @Suppress("BlockingMethodInNonBlockingContext")
     suspend fun <T : Any> responseUnwrap(

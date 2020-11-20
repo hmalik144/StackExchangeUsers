@@ -8,16 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.h_mal.stackexchangeusers.R
-import com.example.h_mal.stackexchangeusers.data.room.entities.UserItem
+import com.example.h_mal.stackexchangeusers.data.room.entities.UserEntity
 import com.example.h_mal.stackexchangeusers.ui.MainViewModel
 import com.example.h_mal.stackexchangeusers.utils.epochToData
 import com.example.h_mal.stackexchangeusers.utils.loadImage
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 /**
- * A simple [Fragment] subclass.
- * Use the [UserProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment to show the user overview
  */
 class UserProfileFragment : Fragment() {
     val viewModel: MainViewModel by activityViewModels()
@@ -43,7 +41,7 @@ class UserProfileFragment : Fragment() {
         viewModel.getSingleUser(id).removeObserver(singleUserObserver)
     }
 
-    private val singleUserObserver = Observer<UserItem> {
+    private val singleUserObserver = Observer<UserEntity> {
         username.text = it.displayName
         reputation.text = it.reputation.toString()
         gold_score.text = it.gold.toString()

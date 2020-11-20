@@ -5,4 +5,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="invalid_entry">Enter a valid username</string>
+    <string name="username">Username:</string>
+    <string name="reputation">Reputation:</string>
+    <string name="bagdes">Bagdes:</string>
+    <string name="gold">Gold -</string>
+    <string name="silver">Silver -</string>
+    <string name="bronze">Bronze -</string>
+    <string name="date_joined">Date Joined:</string>
 </resources>

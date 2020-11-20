@@ -1,4 +1,4 @@
-package com.example.h_mal.stackexchangeusers.data.network.model
+package com.example.h_mal.stackexchangeusers.data.network.response
 
 data class ApiResponse(
     val items : List<User>?,

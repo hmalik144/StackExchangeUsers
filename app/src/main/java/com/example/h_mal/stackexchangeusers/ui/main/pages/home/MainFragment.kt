@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.h_mal.stackexchangeusers.R
-import com.example.h_mal.stackexchangeusers.application.AppClass.Companion.idlingResources
-import com.example.h_mal.stackexchangeusers.data.room.entities.UserItem
+import com.example.h_mal.stackexchangeusers.data.model.UserItem
+import com.example.h_mal.stackexchangeusers.data.room.entities.UserEntity
 import com.example.h_mal.stackexchangeusers.ui.MainViewModel
 import com.example.h_mal.stackexchangeusers.utils.onSubmitListener
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -21,10 +21,11 @@ import kotlinx.android.synthetic.main.main_fragment.*
  * Results for users will be displayed here
  */
 class MainFragment : Fragment() {
-    /**
-     * get [MainViewModel] from [MainActivity] (the calling activity)
-     */
+
+    // Retrieve view model from main activity
     val viewModel: MainViewModel by activityViewModels()
+
+    lateinit var mAdapter: UserRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,13 @@ class MainFragment : Fragment() {
                 viewModel.getUsers(query.toString().trim())
             }
         }
+
+        mAdapter = UserRecyclerViewAdapter(requireView())
+        recycler_view.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = mAdapter
+        }
     }
 
     override fun onStart() {
@@ -55,18 +63,7 @@ class MainFragment : Fragment() {
     }
 
     private val usersObserver = Observer<List<UserItem>> {
-        // create adapter the recycler view
-        val mAdapter = UserRecyclerViewAdapter(
-            requireView(),
-            it
-        )
-
-        // setup the recyclerview
-        recycler_view.apply {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = mAdapter
-        }
+        mAdapter.updateList(it)
     }
 
 }

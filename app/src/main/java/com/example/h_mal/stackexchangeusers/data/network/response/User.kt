@@ -1,4 +1,4 @@
-package com.example.h_mal.stackexchangeusers.data.network.model
+package com.example.h_mal.stackexchangeusers.data.network.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -2,7 +2,7 @@ package com.example.h_mal.stackexchangeusers.data.network.api
 
 import com.example.h_mal.stackexchangeusers.data.network.api.interceptors.NetworkConnectionInterceptor
 import com.example.h_mal.stackexchangeusers.data.network.api.interceptors.QueryParamsInterceptor
-import com.example.h_mal.stackexchangeusers.data.network.model.ApiResponse
+import com.example.h_mal.stackexchangeusers.data.network.response.ApiResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
