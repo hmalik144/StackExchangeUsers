@@ -1,5 +1,15 @@
 # Stack Exchange Users 
 
+# Stack Exchange Users 
+Search for users from stackoverflow api - display a profile when clicked.
+
+## Installation
+Clone this repository with the following command
+
+    git clone https://github.com/hmalik144/StackExchangeUsers/
+
+then open with android studio.
+
 ## Requirements
 
  - Minimum android version 24
